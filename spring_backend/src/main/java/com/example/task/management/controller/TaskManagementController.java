@@ -1,5 +1,9 @@
 package com.example.task.management.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +13,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.task.management.ResourceNotFoundException.ResourceNotFoundException;
@@ -36,10 +42,21 @@ public class TaskManagementController {
 	public List<Task> getAllTasks() {
 		return taskRepository.findAll();
 	}
-
+	
+	@GetMapping("/tasks/overdue")
+	public List<Task> findOverdueTask(@RequestParam("date") 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
+		return taskRepository.findOverdueTasks(date);
+	}
+	
+	@GetMapping("/tasks/due")
+	public List<Task> findDueTask() {
+		return taskRepository.findDueTasks(new Date(new Date().getTime() - (1000 * 60 * 60 * 24))
+				,new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
+	}
+	
 	@GetMapping("/tasks/{id}")
 	public ResponseEntity<Task> getTaskById(@PathVariable(value = "id") String id) throws ResourceNotFoundException {
-		logger.info("Details id:"+ id);
 		Task Task = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
 		return ResponseEntity.ok().body(Task);
@@ -53,7 +70,6 @@ public class TaskManagementController {
 	@PutMapping("/tasks/{id}")
 	public ResponseEntity<Task> updateTask(@PathVariable(value = "id") String id, @Valid @RequestBody Task taskDto)
 			throws ResourceNotFoundException {
-		logger.info("updateTask id:"+ id);
 		Task task = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
 		task.setDate(taskDto.getDate());
@@ -69,7 +85,6 @@ public class TaskManagementController {
 
 	@DeleteMapping("/tasks/{_id}")
 	public Map<String, Boolean> deleteTask(@PathVariable(value = "_id") String id) throws ResourceNotFoundException {
-		logger.info("deleteTask id:"+ id);
 		Task task = taskRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
 
@@ -78,5 +93,6 @@ public class TaskManagementController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+
 
 }
