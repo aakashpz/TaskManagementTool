@@ -34,6 +34,16 @@ export class TaskListComponent implements OnInit {
         },
         error => console.log(error));
   }
+  statusTask(_id: string) {
+  
+    this.taskService.patchTask(_id, 'completed')
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
   updateTask(_id: string){
     this.router.navigate(['update', _id]);
   }
