@@ -35,4 +35,6 @@ Step 3: Running mongoldb container: `docker run -d --name mongo-on-docker -h loc
 
 Step 4: Running Spring Application: `docker run -d --name task-management-tool -h localhost --ip 127.0.0.1 -p 8080:8080 task_management_tool_image`
 
-Once done please use `http://localhost:8080/tasks`
+Step 5: Find Container IP Address : `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id`
+
+Once done please use `http://<ipaddress_container>:8080/tasks`
