@@ -1,0 +1,5 @@
+com/example/task/management/controller/TaskManagementController.class
+com/example/task/management/model/Task.class
+com/example/task/management/TaskManagementApplication.class
+com/example/task/management/repository/TaskRepository.class
+com/example/task/management/ResourceNotFoundException/ResourceNotFoundException.class
