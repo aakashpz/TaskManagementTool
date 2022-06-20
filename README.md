@@ -37,4 +37,4 @@ Step 4: Running Spring Application: `docker run -d --name task-management-tool -
 
 Step 5: Find Container IP Address : `docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id`
 
-Once done please use `http://<ipaddress_container>:8080/tasks`
+Once done please use `http://localhost:8080/tasks`
