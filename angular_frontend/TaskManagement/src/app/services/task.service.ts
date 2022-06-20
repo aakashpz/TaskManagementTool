@@ -22,6 +22,10 @@ export class TaskService {
     return this.http.put(`${this.baseUrl}/${_id}`, value);
   }
 
+  patchTask(_id: string, status: string): Observable<Object> {
+    return this.http.patch(`${this.baseUrl}/${_id}?status=${status}`, {responseType: 'text'});
+  }
+
   deleteTask(_id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${_id}`, { responseType: 'text' });
   }
@@ -29,4 +33,13 @@ export class TaskService {
   getTasksList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  getDueTasksList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/due`);
+  }
+
+  getOverDueTasksList(_date: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/overdue?date=${_date}`);
+  }
+  
 }
