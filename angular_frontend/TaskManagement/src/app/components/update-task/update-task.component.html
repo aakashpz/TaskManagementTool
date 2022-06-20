@@ -3,17 +3,39 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="task.name" name="name">
+      <input type="text" class="form-control" id="name" required [(ngModel)]="task.name" name="name" #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert">
+
+      <div *ngIf="name.errors?.['required']" class="error-occur">
+         Name is required.
+      </div>
+
+    </div>
     </div>
 
     <div class="form-group">
       <label for="name">Task Name</label>
-      <input type="text" class="form-control" id="taskname" required [(ngModel)]="task.taskname" name="taskname">
+      <input type="text" class="form-control" id="taskname" required [(ngModel)]="task.taskname" name="taskname" #taskname="ngModel">
+      <div *ngIf="taskname.invalid && (taskname.dirty || taskname.touched)"
+      class="alert">
+
+      <div *ngIf="taskname.errors?.['required']" class="error-occur">
+         Task Name is required.
+      </div>
+    </div>
     </div>
 
     <div class="form-group">
       <label for="name">Description</label>
-      <input type="text" class="form-control" id="description" required [(ngModel)]="task.description" name="description">
+      <input type="text" class="form-control" id="description" required [(ngModel)]="task.description" name="description" #description="ngModel">
+      <div *ngIf="description.invalid && (description.dirty || description.touched)"
+      class="alert">
+
+        <div *ngIf="description.errors?.['required']" class="error-occur">
+        Description is required.
+         </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -23,8 +45,14 @@
 
     <div class="form-group">
         <label for="name">Date</label>
-        <input type="date" class="form-control" ng-model="string" id="date" required [(ngModel)]="task.date" name="date">
-        <span> format: mm/dd/yyyy</span>
+        <input type="date" class="form-control" ng-model="string" id="date" required [(ngModel)]="task.date" name="date" #date="ngModel">
+        <div *ngIf="date.invalid && (date.dirty || date.touched)"
+        class="alert">
+  
+          <div *ngIf="date.errors?.['required']" class="error-occur">
+          Date is required.
+           </div>
+        </div>
     </div>
 
     <div class="form-group">
