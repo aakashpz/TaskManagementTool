@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Due Task List (Today and Tomorrow)</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped" id="tasklist">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks | async">
+            <td>{{task.name}}</td>
+            <td>{{task.taskname}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.priority}}</td>
+            <td class="due-date">{{task.date}}</td>
+            <td>{{task.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    <button (click)="list()" class="btn btn-primary">Task List</button><br>
+    </div>
+  </div>
