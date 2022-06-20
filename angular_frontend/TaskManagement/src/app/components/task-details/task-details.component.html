@@ -1,0 +1,27 @@
+<h2>Task Details</h2> 
+
+<hr/>
+<div *ngIf="task">
+  <div>
+    <label><b> Name: </b></label> {{task.name}}
+  </div>
+  <div>
+    <label><b>Task Name: </b></label> {{task.taskname}}
+  </div>
+  <div>
+    <label><b>Description: </b></label> {{task.description}}
+  </div>  
+  <div>
+    <label><b>Priority: </b></label> {{task.priority}}
+  </div> 
+  <div>
+    <label><b>Date: </b></label> {{task.date}}
+  </div>  
+  <div>
+    <label><b>Status: </b></label> {{task.status}}
+  </div>    
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Task List</button><br>

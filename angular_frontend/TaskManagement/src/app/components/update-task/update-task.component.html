@@ -1,0 +1,37 @@
+<h3>Update Task</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="task.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Task Name</label>
+      <input type="text" class="form-control" id="taskname" required [(ngModel)]="task.taskname" name="taskname">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Description</label>
+      <input type="text" class="form-control" id="description" required [(ngModel)]="task.description" name="description">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Priority</label>
+        <input type="text" class="form-control" id="priority" required [(ngModel)]="task.priority" name="priority">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Date</label>
+        <input type="date" class="form-control" ng-model="string" id="date" required [(ngModel)]="task.date" name="date">
+        <span> format: mm/dd/yyyy</span>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Status</label>
+      <input type="text" class="form-control" id="priority" required [(ngModel)]="task.status" name="status">
+    </div>
+
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+</div>
