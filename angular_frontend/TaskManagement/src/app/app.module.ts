@@ -8,6 +8,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { UpdateTaskComponent } from './components/update-task/update-task.component';
+import { TaskDueComponent } from './components/task-due/task-due.component';
+import { TaskOverdueComponent } from './components/task-overdue/task-overdue.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { UpdateTaskComponent } from './components/update-task/update-task.compon
     AddTaskComponent,
     TaskDetailsComponent,
     TaskListComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    TaskDueComponent,
+    TaskOverdueComponent
   ],
   imports: [
     BrowserModule,
