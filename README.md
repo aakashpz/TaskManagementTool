@@ -24,3 +24,15 @@ ng serve
 ```
 
 Hit http://localhost:4200 link in a browser
+
+<h2>Docker build</h2>
+
+Step 1: Image creation : `docker build -t task_management_tool_image .`
+
+Step 2: Pull mongodb container: `docker pull mongo`
+
+Step 3: Running mongoldb container: `docker run -d --name mongo-on-docker -p 27017:27017 mongo`
+
+Step 4: Running Spring Application: `docker run -d --name springapplication-on-docker -p 8080:8080 task_management_tool_image`
+
+Once done please use `http://localhost:8080/tasks`
