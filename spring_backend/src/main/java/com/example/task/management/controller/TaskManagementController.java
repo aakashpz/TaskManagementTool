@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -82,7 +83,18 @@ public class TaskManagementController {
 		final Task updateTask = taskRepository.save(task);
 		return ResponseEntity.ok(updateTask);
 	}
-
+	
+	@PatchMapping("/tasks/{id}")
+	public ResponseEntity<Task> updateTaskStatus(@PathVariable(value = "id") String id, @Valid @RequestParam("status")  String status)
+			throws ResourceNotFoundException {
+		Task task = taskRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Task not found for this id :: " + id));
+		
+		task.setStatus(status);
+		final Task updateTask = taskRepository.save(task);
+		return ResponseEntity.ok(updateTask);
+	}
+	
 	@DeleteMapping("/tasks/{_id}")
 	public Map<String, Boolean> deleteTask(@PathVariable(value = "_id") String id) throws ResourceNotFoundException {
 		Task task = taskRepository.findById(id)
