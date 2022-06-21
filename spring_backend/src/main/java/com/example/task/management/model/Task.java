@@ -6,12 +6,17 @@ import java.util.Date;
 @Document(collection = "task_sequences")
 public class Task {
 	
+	@Id
 	private String id;
+	@NotNull
 	private String name;
+	@NotNull
 	private String description;
 	private String priority;
+	@NotNull
 	private String taskname;
 	private String status;
+	@NotNull
 	private Date date;
 	
 	public Task() {
