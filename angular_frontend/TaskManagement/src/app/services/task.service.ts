@@ -38,8 +38,8 @@ export class TaskService {
     return this.http.get(`${this.baseUrl}/due`);
   }
 
-  getOverDueTasksList(_date: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/overdue?date=${_date}`);
+  getOverDueTasksList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/overdue`);
   }
   
 }
