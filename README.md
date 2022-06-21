@@ -23,7 +23,7 @@ Step 2: Run the Frontend application
 ng serve
 ```
 
-Hit http://localhost:4200 link in a browser
+Use Following link http://localhost:4200 in a browser
 
 <h2>Docker build</h2>
 
