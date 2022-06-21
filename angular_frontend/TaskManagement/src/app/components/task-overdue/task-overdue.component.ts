@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class TaskOverdueComponent implements OnInit {
   tasks: Observable<Task[]>;
-  _date: string;
 
   constructor(private taskService: TaskService,
     private router: Router) {}
@@ -21,17 +20,7 @@ export class TaskOverdueComponent implements OnInit {
     this.reloadData();
   }
   reloadData() {
-    this.tasks = this.taskService.getOverDueTasksList(this._date);;
-  }
-  overDueTask(_date: string) {
-  
-    this.taskService.getOverDueTasksList(_date)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
+    this.tasks = this.taskService.getOverDueTasksList();;
   }
   list(){
     this.router.navigate(['tasks']);
