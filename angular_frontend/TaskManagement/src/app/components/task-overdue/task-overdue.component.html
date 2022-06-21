@@ -1,19 +1,8 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
       <h2>OverDue Task List (Today and Tomorrow)</h2>
+      <h4>(Overdue definition consider >3 days)</h4>
     </div>
-    <div class="form-group">
-        <label for="name">Date</label>
-        <input type="date" class="form-control" ng-model="string" id="date" required [(ngModel)]="_date" name="date" #date="ngModel">
-        <div *ngIf="date.invalid && (date.dirty || date.touched)"
-        class="alert">
-  
-          <div *ngIf="date.errors?.['required']" class="error-occur">
-          Date is required.
-           </div>
-        </div>
-    </div>
-    <button (click)="overDueTask(date.value)" class="btn btn-primary">Overdue Task List</button><br>
     <div class="panel-body">
       <table class="table table-striped" id="tasklist">
         <thead>
