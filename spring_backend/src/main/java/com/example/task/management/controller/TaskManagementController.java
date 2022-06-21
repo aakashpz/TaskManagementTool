@@ -45,15 +45,14 @@ public class TaskManagementController {
 	}
 	
 	@GetMapping("/tasks/overdue")
-	public List<Task> findOverdueTask(@RequestParam("date") 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
-		return taskRepository.findOverdueTasks(date);
+	public List<Task> findOverdueTask() {
+		return taskRepository.findOverdueTasks(new Date(new Date().getTime() - (1000 * 86400 * 3)));
 	}
 	
 	@GetMapping("/tasks/due")
 	public List<Task> findDueTask() {
-		return taskRepository.findDueTasks(new Date(new Date().getTime() - (1000 * 60 * 60 * 24))
-				,new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
+		return taskRepository.findDueTasks(new Date(new Date().getTime() - (1000 * 86400 * 2))
+				,new Date(new Date().getTime() + (1000 * 86400 * 1)));
 	}
 	
 	@GetMapping("/tasks/{id}")
