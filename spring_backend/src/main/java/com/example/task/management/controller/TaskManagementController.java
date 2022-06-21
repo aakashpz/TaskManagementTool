@@ -51,7 +51,7 @@ public class TaskManagementController {
 	
 	@GetMapping("/tasks/due")
 	public List<Task> findDueTask() {
-		return taskRepository.findDueTasks(new Date(new Date().getTime() - (1000 * 86400 * 2))
+		return taskRepository.findDueTasks(new Date(new Date().getTime() - (1000 * 86400 * 1))
 				,new Date(new Date().getTime() + (1000 * 86400 * 1)));
 	}
 	
